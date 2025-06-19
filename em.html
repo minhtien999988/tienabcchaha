@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Anh Yêu Em</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .heart-img {
+      width: 250px;
+      max-width: 90vw;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #ff69b4aa;
+      animation: pulse 2s infinite ease-in-out;
+      transition: transform 0.3s;
+    }
+
+    .heart-img:hover {
+      transform: scale(1.05);
+    }
+
+    .text {
+      color: #ff99cc;
+      font-size: 36px;
+      font-family: 'Courier New', Courier, monospace;
+      margin-top: 20px;
+      animation: glow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff66cc, 0 0 20px #ff66cc;
+      }
+      to {
+        text-shadow: 0 0 20px #ff66cc, 0 0 30px #ff3399;
+      }
+    }
+
+    .firework {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #ff69b4;
+      border-radius: 50%;
+      animation: explode 1.5s ease-out infinite;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(
+          calc(100px - 200px * var(--randX)),
+          calc(100px - 200px * var(--randY))
+        );
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="https://th.bing.com/th/id/OIP.2uEmWhQiURB1a_z12fCIwAHaFj?rs=1&pid=ImgDetMain" alt="Trái Tim" class="heart-img">
+  <div class="text">Anh Yêu Em</div>
+
+  <script>
+    for (let i = 0; i < 40; i++) {
+      const fw = document.createElement("div");
+      fw.classList.add("firework");
+      fw.style.left = Math.random() * window.innerWidth + "px";
+      fw.style.top = Math.random() * window.innerHeight + "px";
+      fw.style.animationDelay = (Math.random() * 3) + "s";
+      fw.style.setProperty('--randX', Math.random());
+      fw.style.setProperty('--randY', Math.random());
+      document.body.appendChild(fw);
+    }
+  </script>
+</body>
+</html>
