@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Anh Yêu Em 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(#000000, #1a001a);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    .heart {
+      font-size: 60px;
+      color: #ff66cc;
+      animation: pulse 1s infinite;
+      text-shadow: 0 0 20px #ff66cc, 0 0 40px #ff3399;
+    }
+
+    .text {
+      color: #ffccff;
+      font-size: 36px;
+      margin-top: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff99cc; }
+      to { text-shadow: 0 0 20px #ff3399, 0 0 30px #ff66cc; }
+    }
+
+    .falling-heart {
+      position: absolute;
+      color: #ff66cc;
+      animation: fall 5s linear infinite;
+      font-size: 20px;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        top: -10%;
+        opacity: 0;
+      }
+      100% {
+        top: 110%;
+        opacity: 1;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart">💗</div>
+  <div class="text">Anh Yêu Em</div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/11/03/audio_b5d1cf2894.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    for (let i = 0; i < 30; i++) {
+      let heart = document.createElement('div');
+      heart.classList.add('falling-heart');
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+      heart.style.fontSize = (16 + Math.random() * 20) + 'px';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
